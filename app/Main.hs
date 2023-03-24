@@ -9,6 +9,8 @@ import Exp
 import Parsing
 import Printing
 import REPLCommand
+import Eval
+import Sugar
 
 main :: IO ()
 main = do
@@ -22,7 +24,10 @@ main = do
             main
         Just (Eval s) -> do
             case parseFirst expr s of
-                Just e -> putStrLn (showExp e)
+                Just e -> do 
+                    let e' = sugarExp (normalize (desugarExp e))
+                    putStrLn (showExp e')
+                    main
                 Nothing -> putStrLn "Invalid expression"
             main
         Nothing -> do

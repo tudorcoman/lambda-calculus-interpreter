@@ -25,11 +25,13 @@ source-repository head
 
 library
   exposed-modules:
+      Eval
       Exp
       Lab2
       Parsing
       Printing
       REPLCommand
+      Sugar
   other-modules:
       Paths_lambda_calculus_interpreter
   hs-source-dirs:
